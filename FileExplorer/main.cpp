@@ -7,24 +7,24 @@
 /*TODO
 * before anything else:
 * > PLAN MORE STUFF U DUMB FUCK
-* 
+*
 * Classes:
 * > File, Folder, Operations, (for now to test things)
-* 
+*
 * must-have functions:
-* > smth to separate command and parameters/names 
+* > smth to separate command and parameters/names
 * > function that makes use of separated strings above
-* 
+*
 * Tests:
 * > add and remove functions (opening for later)
 */
 
-enum class Operation{
+enum class Operation {
   listElements, quitTerminal,
-  newFile,     newFolder, 
-  openFile,    openFolder, 
-  deleteFile,  deleteFolder,
-               closeFolder
+  newFile, newFolder,
+  openFile, openFolder,
+  deleteFile, deleteFolder,
+  closeFolder
 };
 
 typedef std::unordered_map<std::string, Operation> operationsMap;
@@ -48,9 +48,9 @@ public:
   bool getUserInput() {
     std::string input;
     std::cin.clear();
-    std::cout << "[@]> " << std::flush;
+    std::cout << "[@]root/> " << std::flush;
     std::getline(std::cin, input);
-    std::string fileName;
+    std::string fileName = getFileNameFromInput(input);
     return selectOperation(input, fileName);
   }
 
@@ -67,7 +67,8 @@ public:
   }
 
   std::string::const_iterator getCharIterator(const std::string& s, char c) {
-    for (std::string::const_iterator itr = s.begin(); itr != s.end(); ++itr) {
+    for (
+      std::string::const_iterator itr = s.begin(); itr != s.end(); ++itr) {
       if (*itr == c) return itr;
     }
     return s.end();
@@ -84,31 +85,31 @@ public:
       return true;
       break;
     case Operation::newFile:
-      std::cout << "creating new file\n";
+      std::cout << "creating file " << fileName << std::endl;
       return true;
       break;
     case Operation::openFile:
-      std::cout << "opening file\n";
+      std::cout << "opening file " << fileName << std::endl;
       return true;
       break;
     case Operation::deleteFile:
-      std::cout << "deleting file\n";
+      std::cout << "deleting file " << fileName << std::endl;
       return true;
       break;
     case Operation::newFolder:
-      std::cout << "creating new folder\n";
+      std::cout << "creating folder " << fileName << std::endl;
       return true;
       break;
     case Operation::openFolder:
-      std::cout << "opening folder\n";
+      std::cout << "opening folder " << fileName << std::endl;
       return true;
       break;
     case Operation::closeFolder:
-      std::cout << "closing folder\n";
+      std::cout << "closing folder " << fileName << std::endl;
       return true;
       break;
     case Operation::deleteFolder:
-      std::cout << "deleting folder\n";
+      std::cout << "deleting folder " << fileName << std::endl;
       return true;
       break;
     case Operation::quitTerminal:
@@ -126,10 +127,9 @@ int main() {
   File* root = new Folder("root");
   File* current = root;
 
-  std::string input;
-  std::getline(std::cin, input);
-  std::string fileName = operations.getFileNameFromInput(input);
-  std::cout << input << "\n" << fileName;
+  while (operations.getUserInput()) {
+
+  }
 
   delete root;
 
