@@ -20,11 +20,12 @@
 */
 
 enum class Operation {
-  listElements, quitTerminal,
-  newFile, newFolder,
-  openFile, openFolder,
-  deleteFile, deleteFolder,
-  closeFolder
+  listElements,
+  newFile,      newFolder,
+  openFile,     openFolder,
+  deleteFile,   deleteFolder,
+                closeFolder,
+  quitTerminal, clearTerminal,
 };
 
 typedef std::unordered_map<std::string, Operation> operationsMap;
@@ -42,6 +43,7 @@ public:
     operationCommands[(std::string)"folder>"] = Operation::openFolder;
     operationCommands[(std::string)"folder<"] = Operation::closeFolder;
     operationCommands[(std::string)"folder-"] = Operation::deleteFolder;
+    operationCommands[(std::string)"clear"] = Operation::clearTerminal;
     operationCommands[(std::string)"quit"] = Operation::quitTerminal;
   }
 
@@ -82,39 +84,35 @@ public:
     case Operation::listElements:
       std::cout << "printing all elements\n";
       return true;
-      break;
     case Operation::newFile:
       std::cout << "creating file " << fileName << std::endl;
       return true;
-      break;
     case Operation::openFile:
       std::cout << "opening file " << fileName << std::endl;
       return true;
-      break;
     case Operation::deleteFile:
       std::cout << "deleting file " << fileName << std::endl;
       return true;
-      break;
     case Operation::newFolder:
       std::cout << "creating folder " << fileName << std::endl;
       return true;
-      break;
     case Operation::openFolder:
       std::cout << "opening folder " << fileName << std::endl;
       return true;
-      break;
     case Operation::closeFolder:
       std::cout << "closing folder " << fileName << std::endl;
       return true;
-      break;
     case Operation::deleteFolder:
       std::cout << "deleting folder " << fileName << std::endl;
       return true;
-      break;
+    case Operation::clearTerminal:
+      system("cls");
+      return true;
     case Operation::quitTerminal:
       std::cout << "quitting...\n";
       return false;
-      break;
+    default:
+      return false;
     }
   }
 };
