@@ -1,6 +1,8 @@
 #include <iostream>
 #include <string>
 #include <unordered_map>
+#include <memory>
+#include "file.hpp" 
 
 /*TODO
 * before anything else:
@@ -43,28 +45,56 @@ public:
     operationCommands[(std::string)"quit"] = Operation::quitTerminal;
   }
 
-  void selectOperation(const std::string& userInput) {
+  bool getUserInput() {
+    std::string input;
+    std::cin.clear();
+    std::cout << "[@]> " << std::flush;
+    std::cin >> input;
+    return selectOperation(input);
+  }
+
+  bool selectOperation(const std::string& userInput) {
+    if (!operationCommands.count(userInput)) {
+      std::cout << "command not found!\n";
+      return true;
+    }
     switch (operationCommands[userInput]) {
     case Operation::listElements:
+      std::cout << "printing all elements\n";
+      return true;
       break;
     case Operation::newFile:
+      std::cout << "creating new file\n";
+      return true;
       break;
     case Operation::openFile:
+      std::cout << "opening file\n";
+      return true;
       break;
     case Operation::deleteFile:
+      std::cout << "deleting file\n";
+      return true;
       break;
     case Operation::newFolder:
+      std::cout << "creating new folder\n";
+      return true;
       break;
     case Operation::openFolder:
+      std::cout << "opening folder\n";
+      return true;
       break;
     case Operation::closeFolder:
+      std::cout << "closing folder\n";
+      return true;
       break;
     case Operation::deleteFolder:
+      std::cout << "deleting folder\n";
+      return true;
       break;
     case Operation::quitTerminal:
+      std::cout << "quitting...\n";
+      return false;
       break;
-    default:
-      throw std::exception("No command found");
     }
   }
 };
@@ -72,7 +102,15 @@ public:
 
 int main() {
 
+  OperationClass operations;
+  File* root = new Folder("root");
+  File* current = root;
 
+  while (operations.getUserInput()) {
+
+  }
+
+  delete root;
 
   return 0;
 }
