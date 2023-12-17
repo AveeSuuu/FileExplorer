@@ -67,8 +67,7 @@ public:
   }
 
   std::string::const_iterator getCharIterator(const std::string& s, char c) {
-    for (
-      std::string::const_iterator itr = s.begin(); itr != s.end(); ++itr) {
+    for (std::string::const_iterator itr = s.begin(); itr != s.end(); ++itr) {
       if (*itr == c) return itr;
     }
     return s.end();
