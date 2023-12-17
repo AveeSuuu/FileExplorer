@@ -18,10 +18,11 @@
 */
 
 enum class Operation{
-  listElements, 
+  listElements, quitTerminal,
   newFile,     newFolder, 
   openFile,    openFolder, 
-  deleteFile,  deleteFolder
+  deleteFile,  deleteFolder,
+               closeFolder
 };
 
 typedef std::unordered_map<std::string, Operation> operationsMap;
@@ -37,9 +38,37 @@ public:
     operationCommands[(std::string)"file-"] = Operation::deleteFile;
     operationCommands[(std::string)"folder+"] = Operation::newFolder;
     operationCommands[(std::string)"folder>"] = Operation::openFolder;
+    operationCommands[(std::string)"folder<"] = Operation::closeFolder;
     operationCommands[(std::string)"folder-"] = Operation::deleteFolder;
+    operationCommands[(std::string)"quit"] = Operation::quitTerminal;
+  }
+
+  void selectOperation(const std::string& userInput) {
+    switch (operationCommands[userInput]) {
+    case Operation::listElements:
+      break;
+    case Operation::newFile:
+      break;
+    case Operation::openFile:
+      break;
+    case Operation::deleteFile:
+      break;
+    case Operation::newFolder:
+      break;
+    case Operation::openFolder:
+      break;
+    case Operation::closeFolder:
+      break;
+    case Operation::deleteFolder:
+      break;
+    case Operation::quitTerminal:
+      break;
+    default:
+      throw std::exception("No command found");
+    }
   }
 };
+//Would be nice if current path was visible just like in normal terminal
 
 int main() {
 
