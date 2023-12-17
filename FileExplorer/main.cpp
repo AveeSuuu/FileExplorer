@@ -49,11 +49,31 @@ public:
     std::string input;
     std::cin.clear();
     std::cout << "[@]> " << std::flush;
-    std::cin >> input;
-    return selectOperation(input);
+    std::getline(std::cin, input);
+    std::string fileName;
+    return selectOperation(input, fileName);
   }
 
-  bool selectOperation(const std::string& userInput) {
+  std::string getFileNameFromInput(std::string& input) {
+    std::string fileName = input;
+
+    std::string::const_iterator spaceItr = getCharIterator(fileName, ' ');
+    if (spaceItr != fileName.end()) {
+      fileName.erase(fileName.begin(), ++spaceItr);
+      input.erase(getCharIterator(input, ' '), input.end());
+    }
+
+    return fileName;
+  }
+
+  std::string::const_iterator getCharIterator(const std::string& s, char c) {
+    for (std::string::const_iterator itr = s.begin(); itr != s.end(); ++itr) {
+      if (*itr == c) return itr;
+    }
+    return s.end();
+  }
+
+  bool selectOperation(const std::string& userInput, const std::string& fileName) {
     if (!operationCommands.count(userInput)) {
       std::cout << "command not found!\n";
       return true;
@@ -106,9 +126,10 @@ int main() {
   File* root = new Folder("root");
   File* current = root;
 
-  while (operations.getUserInput()) {
-
-  }
+  std::string input;
+  std::getline(std::cin, input);
+  std::string fileName = operations.getFileNameFromInput(input);
+  std::cout << input << "\n" << fileName;
 
   delete root;
 
