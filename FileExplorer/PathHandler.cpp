@@ -17,3 +17,9 @@ std::string PathHandler::getPath() const {
 
   return path;
 }
+
+PathHandler::~PathHandler() {
+  for (auto folder : path_) {
+    delete folder;
+  }
+}

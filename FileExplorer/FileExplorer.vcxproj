@@ -127,6 +127,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Explorer.cpp" />
     <ClCompile Include="Folder.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="OperationsHandler.cpp" />
@@ -134,6 +135,7 @@
     <ClCompile Include="UserInputHandler.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Explorer.hpp" />
     <ClInclude Include="Folder.hpp" />
     <ClInclude Include="OperationsHandler.hpp" />
     <ClInclude Include="PathHandler.hpp" />

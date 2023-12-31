@@ -1,7 +1,7 @@
 #include <iostream>
 #include <string>
 #include <vector>
-#include "PathHandler.hpp"
+#include "OperationsHandler.hpp"
 /*TODO
 * before anything else:
 * > PLAN MORE STUFF U DUMB FUCK
@@ -23,16 +23,11 @@
 
 int main() {
 
-  PathHandler path;
-  Folder* home = new Folder("home");
-  Folder* desktop = new Folder("desktop");
-  Folder* documents = new Folder("documents");
+  OperationsHandler operations;
 
-  path.addToPath(home);
-  path.addToPath(desktop);
-  path.addToPath(documents);
+  while (operations.selectOperation()) {
 
-  std::cout << path.getPath();
+  }
 
   return 0;
 }
