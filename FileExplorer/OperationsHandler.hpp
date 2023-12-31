@@ -8,7 +8,7 @@
 #include "Operations.hpp"
 
 enum class OperationType {
-  listElements,
+  listElements, treeElements,
   newFile,      newFolder,
   openFile,     openFolder,
   deleteFile,   deleteFolder,

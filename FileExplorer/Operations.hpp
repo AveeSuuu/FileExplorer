@@ -8,6 +8,7 @@ public:
   void setCurrent(Folder* folder);
   Folder* getCurrent();
   void listElements();
+  void treeElements(Folder* folder, int level);
   void createFolder(const std::string& folderName);
   void removeFolder(const std::string& folderName);
   void enterFolder(const std::string& folderName);

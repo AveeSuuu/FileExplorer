@@ -2,6 +2,7 @@
 
 OperationsHandler::OperationsHandler(PathHandler* path) {
   operationCommands[(std::string)"ls"] = OperationType::listElements;
+  operationCommands[(std::string)"tree"] = OperationType::treeElements;
   operationCommands[(std::string)"file+"] = OperationType::newFile;
   operationCommands[(std::string)"file>"] = OperationType::openFile;
   operationCommands[(std::string)"file-"] = OperationType::deleteFile;
@@ -54,6 +55,9 @@ bool OperationsHandler::getOperation(const std::string& userInput, const std::st
   switch (operationCommands[userInput]) {
   case OperationType::listElements:
     operations.listElements();
+    return true;
+  case OperationType::treeElements:
+    operations.treeElements(path_->getCurrentLocation(), 1);
     return true;
     /*
   case OperationType::newFile:

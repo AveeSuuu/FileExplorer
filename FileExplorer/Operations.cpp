@@ -15,6 +15,22 @@ void Operations::listElements() {
   }
 }
 
+void Operations::treeElements(Folder* folder, int level) {
+
+  auto currentContainer = folder->getAccessToContainer();
+
+  std::string tab;
+
+  for (int i = 0; i < level; i++) {
+    tab += "  ";
+  }
+
+  for (auto itr = currentContainer->begin(); itr != currentContainer->end(); ++itr) {
+    std::cout << tab << " > " << itr->second->getFolderName() << "\n";
+    treeElements(itr->second, level + 1);
+  }
+}
+
 void Operations::createFolder(const std::string& folderName) {
   if (checkIfFolderExists(folderName)) {
     std::cerr << "[!] Folder '" << folderName << "' already exists!\n";
