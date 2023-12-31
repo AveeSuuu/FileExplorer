@@ -129,13 +129,13 @@
   <ItemGroup>
     <ClCompile Include="Folder.cpp" />
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="OperationClass.cpp" />
+    <ClCompile Include="OperationsHandler.cpp" />
     <ClCompile Include="PathHandler.cpp" />
     <ClCompile Include="UserInputHandler.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Folder.hpp" />
-    <ClInclude Include="OperationClass.hpp" />
+    <ClInclude Include="OperationsHandler.hpp" />
     <ClInclude Include="PathHandler.hpp" />
     <ClInclude Include="UserInputHandler.hpp" />
   </ItemGroup>

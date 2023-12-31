@@ -1,10 +1,11 @@
 #pragma once
-#include "Folder.hpp" 
 #include <unordered_map>
 #include <memory>
 #include <iostream>
+#include "Folder.hpp" 
+#include "PathHandler.hpp"
 
-enum class Operation {
+enum class OperationType {
   listElements,
   newFile,      newFolder,
   openFile,     openFolder,
@@ -13,15 +14,16 @@ enum class Operation {
   quitTerminal, clearTerminal,
 };
 
-typedef std::unordered_map<std::string, Operation> operationsMap;
+typedef std::unordered_map<std::string, OperationType> operationsMap;
 
-class OperationClass {
+class OperationsHandler {
 public:
-  OperationClass();
-  bool getUserInput();
+  OperationsHandler();
+  bool selectOperation();
 private:
+  PathHandler path;
   operationsMap operationCommands;
-  bool selectOperation(const std::string& userInput, const std::string& fileName);
+  bool getOperation(const std::string& userInput, const std::string& fileName);
   std::string getFileNameFromInput(std::string& input);
   std::string::const_iterator getCharIterator(const std::string& s, char c);
 };
