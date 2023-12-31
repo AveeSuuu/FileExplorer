@@ -18,7 +18,7 @@ OperationsHandler::OperationsHandler(PathHandler* path) {
 bool OperationsHandler::selectOperation() {
   std::string input;
   std::cin.clear();
-  std::cout << path_->getPath() << ":: " << std::flush;
+  std::cout << path_->getPath() << "::" << std::flush;
   std::getline(std::cin, input);
   std::string fileName = getFileNameFromInput(input);
   return getOperation(input, fileName);
@@ -48,9 +48,12 @@ bool OperationsHandler::getOperation(const std::string& userInput, const std::st
     std::cerr << "command not found!\n";
     return true;
   }
+
+  operations.setCurrent(path_->getCurrentLocation());
+
   switch (operationCommands[userInput]) {
   case OperationType::listElements:
-    std::cout << "printing all elements\n";
+    operations.listElements();
     return true;
     /*
   case OperationType::newFile:
@@ -64,22 +67,23 @@ bool OperationsHandler::getOperation(const std::string& userInput, const std::st
     return true;
     */
   case OperationType::newFolder:
-    std::cout << "creating folder " << fileName << std::endl;
+    operations.createFolder(fileName);
     return true;
   case OperationType::openFolder:
-    std::cout << "opening folder " << fileName << std::endl;
+    operations.enterFolder(fileName);
+    path_->addToPath(operations.getCurrent());
     return true;
   case OperationType::closeFolder:
-    std::cout << "closing folder " << fileName << std::endl;
+    operations.leaveFolder();
     return true;
   case OperationType::deleteFolder:
-    std::cout << "deleting folder " << fileName << std::endl;
+    operations.removeFolder(fileName);
     return true;
   case OperationType::clearTerminal:
-    system("cls");
+    operations.clearTerminal();
     return true;
   case OperationType::quitTerminal:
-    std::cout << "quitting...\n";
+    operations.quitExplorer();
     return false;
   default:
     return false;

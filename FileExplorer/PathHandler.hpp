@@ -7,7 +7,7 @@ public:
   void addToPath(Folder* folder);
   void removeFromPath();
   std::string getPath() const;
-  ~PathHandler();
+  Folder* getCurrentLocation();
 private:
   std::vector<Folder*> path_;
 };

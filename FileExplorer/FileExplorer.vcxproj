@@ -129,17 +129,19 @@
   <ItemGroup>
     <ClCompile Include="Explorer.cpp" />
     <ClCompile Include="Folder.cpp" />
+    <ClCompile Include="FolderManager.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="Operations.cpp" />
     <ClCompile Include="OperationsHandler.cpp" />
     <ClCompile Include="PathHandler.cpp" />
-    <ClCompile Include="UserInputHandler.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Explorer.hpp" />
     <ClInclude Include="Folder.hpp" />
+    <ClInclude Include="FolderManager.hpp" />
+    <ClInclude Include="Operations.hpp" />
     <ClInclude Include="OperationsHandler.hpp" />
     <ClInclude Include="PathHandler.hpp" />
-    <ClInclude Include="UserInputHandler.hpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -11,3 +11,8 @@ void Explorer::run() {
   while (operations_->selectOperation());
 }
 
+Explorer::~Explorer() {
+  delete root_;
+  delete path_;
+  delete operations_;
+}
