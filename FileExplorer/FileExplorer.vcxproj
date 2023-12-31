@@ -127,12 +127,17 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Folder.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="OperationClass.cpp" />
+    <ClCompile Include="PathHandler.cpp" />
+    <ClCompile Include="UserInputHandler.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="File.hpp" />
+    <ClInclude Include="Folder.hpp" />
     <ClInclude Include="OperationClass.hpp" />
+    <ClInclude Include="PathHandler.hpp" />
+    <ClInclude Include="UserInputHandler.hpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -1,15 +1,15 @@
 #pragma once
+#include "Folder.hpp" 
 #include <unordered_map>
 #include <memory>
-#include "file.hpp" 
 #include <iostream>
 
 enum class Operation {
   listElements,
-  newFile, newFolder,
-  openFile, openFolder,
-  deleteFile, deleteFolder,
-  closeFolder,
+  newFile,      newFolder,
+  openFile,     openFolder,
+  deleteFile,   deleteFolder,
+                closeFolder,
   quitTerminal, clearTerminal,
 };
 
@@ -21,8 +21,8 @@ public:
   bool getUserInput();
 private:
   operationsMap operationCommands;
+  bool selectOperation(const std::string& userInput, const std::string& fileName);
   std::string getFileNameFromInput(std::string& input);
   std::string::const_iterator getCharIterator(const std::string& s, char c);
-  bool selectOperation(const std::string& userInput, const std::string& fileName);
 };
 
