@@ -26,7 +26,13 @@ void Operations::treeElements(Folder* folder, int level) {
   }
 
   for (auto itr = currentContainer->begin(); itr != currentContainer->end(); ++itr) {
-    std::cout << tab << " > " << itr->second->getFolderName() << "\n";
+    if (itr->second->getAccessToContainer()->size() > 1) {
+      std::cout << tab << " v " << itr->second->getFolderName() << "\n";
+    }
+    else {
+      std::cout << tab << " > " << itr->second->getFolderName() << "\n";
+    }
+
     treeElements(itr->second, level + 1);
   }
 }

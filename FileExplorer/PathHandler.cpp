@@ -12,7 +12,7 @@ std::string PathHandler::getPath() const {
   std::string path;
   for (auto folder : path_) {
     path += folder->getFolderName();
-    path += "/";
+    path += "\\";
   }
 
   return path;
