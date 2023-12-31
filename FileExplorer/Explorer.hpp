@@ -6,14 +6,11 @@
 
 class Explorer{
 public:
-  Explorer() {
-    
-  }
-
+  Explorer();
   void run();
 private:
-  Folder* homeFolder = nullptr;
-  PathHandler* path = nullptr;
-  OperationsHandler* operations = nullptr;
+  Folder* root_ = nullptr;
+  PathHandler* path_ = nullptr;
+  OperationsHandler* operations_ = nullptr;
 };
 

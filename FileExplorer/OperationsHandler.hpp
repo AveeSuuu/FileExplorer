@@ -18,10 +18,10 @@ typedef std::unordered_map<std::string, OperationType> operationsMap;
 
 class OperationsHandler {
 public:
-  OperationsHandler();
+  OperationsHandler(PathHandler* path);
   bool selectOperation();
 private:
-  PathHandler path;
+  PathHandler* path_;
   operationsMap operationCommands;
   bool getOperation(const std::string& userInput, const std::string& fileName);
   std::string getFileNameFromInput(std::string& input);

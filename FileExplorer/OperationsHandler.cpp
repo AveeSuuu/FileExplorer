@@ -1,6 +1,6 @@
 #include "OperationsHandler.hpp"
 
-OperationsHandler::OperationsHandler() {
+OperationsHandler::OperationsHandler(PathHandler* path) {
   operationCommands[(std::string)"ls"] = OperationType::listElements;
   operationCommands[(std::string)"file+"] = OperationType::newFile;
   operationCommands[(std::string)"file>"] = OperationType::openFile;
@@ -11,13 +11,14 @@ OperationsHandler::OperationsHandler() {
   operationCommands[(std::string)"folder-"] = OperationType::deleteFolder;
   operationCommands[(std::string)"clear"] = OperationType::clearTerminal;
   operationCommands[(std::string)"quit"] = OperationType::quitTerminal;
-  path.addToPath(new Folder("home"));
+
+  path_ = path;
 }
 
 bool OperationsHandler::selectOperation() {
   std::string input;
   std::cin.clear();
-  std::cout << path.getPath() << ":: " << std::flush;
+  std::cout << path_->getPath() << ":: " << std::flush;
   std::getline(std::cin, input);
   std::string fileName = getFileNameFromInput(input);
   return getOperation(input, fileName);
