@@ -2,7 +2,7 @@
 #include <string>
 #include <unordered_map>
 
-class Folder{
+class Folder {
 public:
   Folder(const std::string& fileName);
   std::string getFolderName() const;

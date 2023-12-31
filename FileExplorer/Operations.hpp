@@ -1,9 +1,9 @@
 #pragma once
+#include <iostream>
+#include "PathHandler.hpp"
 #include "Folder.hpp"
-#include "iostream"
 
-class Operations{
-  Folder* current = nullptr;
+class Operations {
 public:
   void setCurrent(Folder* folder);
   Folder* getCurrent();
@@ -11,8 +11,11 @@ public:
   void createFolder(const std::string& folderName);
   void removeFolder(const std::string& folderName);
   void enterFolder(const std::string& folderName);
-  void leaveFolder();
+  void leaveFolder(PathHandler* path);
   void clearTerminal();
   void quitExplorer();
+private:
+  Folder* current = nullptr;
+  bool checkIfFolderExists(const std::string& folderName);
 };
 

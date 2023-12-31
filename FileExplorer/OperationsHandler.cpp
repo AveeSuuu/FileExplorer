@@ -74,7 +74,7 @@ bool OperationsHandler::getOperation(const std::string& userInput, const std::st
     path_->addToPath(operations.getCurrent());
     return true;
   case OperationType::closeFolder:
-    operations.leaveFolder();
+    operations.leaveFolder(path_);
     return true;
   case OperationType::deleteFolder:
     operations.removeFolder(fileName);
