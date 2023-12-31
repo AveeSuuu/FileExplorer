@@ -13,7 +13,6 @@ public:
 
 class Folder : public File {
 private:
-  std::string fileName_;
   std::unordered_map<std::string, File*> files_;
 public:
   Folder(const std::string& fileName): File(fileName) {
