@@ -8,6 +8,21 @@ Folder* Operations::getCurrent() {
   return this->current;
 }
 
+void Operations::help() {
+  std::cout
+    << "= = = = = = = = = = Commands help = = = = = = = = = =\n"
+    << "help\t\t|| shows commands info \n"
+    << "ls\t\t|| list all files in current location \n"
+    << "tree\t\t|| show all files in tree structure \n"
+    << "folder+ {name}\t|| create new folder \n"
+    << "folder- {name}\t|| delete folder \n"
+    << "folder> {name}\t|| enter folder \n"
+    << "folder<\t\t|| quit current folder \n"
+    << "clear\t\t|| clear terminal \n"
+    << "quit\t\t|| quit terminal \n"
+    << "= = = = = = = = = = = = = = = = = = = = = = = = = = =\n";
+}
+
 void Operations::listElements() {
   auto container = current->getAccessToContainer();
   for (auto itr = container->begin(); itr != container->end(); ++itr) {

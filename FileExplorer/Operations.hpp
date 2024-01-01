@@ -7,6 +7,7 @@ class Operations {
 public:
   void setCurrent(Folder* folder);
   Folder* getCurrent();
+  void help();
   void listElements();
   void treeElements(Folder* folder, int level);
   void createFolder(const std::string& folderName);

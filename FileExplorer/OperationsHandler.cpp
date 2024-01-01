@@ -1,15 +1,18 @@
 #include "OperationsHandler.hpp"
 
 OperationsHandler::OperationsHandler(PathHandler* path) {
+  operationCommands[(std::string)"help"] = OperationType::help;
   operationCommands[(std::string)"ls"] = OperationType::listElements;
   operationCommands[(std::string)"tree"] = OperationType::treeElements;
+  /*
   operationCommands[(std::string)"file+"] = OperationType::newFile;
   operationCommands[(std::string)"file>"] = OperationType::openFile;
   operationCommands[(std::string)"file-"] = OperationType::deleteFile;
+  */
   operationCommands[(std::string)"folder+"] = OperationType::newFolder;
+  operationCommands[(std::string)"folder-"] = OperationType::deleteFolder;
   operationCommands[(std::string)"folder>"] = OperationType::openFolder;
   operationCommands[(std::string)"folder<"] = OperationType::closeFolder;
-  operationCommands[(std::string)"folder-"] = OperationType::deleteFolder;
   operationCommands[(std::string)"clear"] = OperationType::clearTerminal;
   operationCommands[(std::string)"quit"] = OperationType::quitTerminal;
 
@@ -53,6 +56,9 @@ bool OperationsHandler::getOperation(const std::string& userInput, const std::st
   operations.setCurrent(path_->getCurrentLocation());
 
   switch (operationCommands[userInput]) {
+  case OperationType::help:
+    operations.help();
+    return true;
   case OperationType::listElements:
     operations.listElements();
     return true;
@@ -73,15 +79,15 @@ bool OperationsHandler::getOperation(const std::string& userInput, const std::st
   case OperationType::newFolder:
     operations.createFolder(fileName);
     return true;
+  case OperationType::deleteFolder:
+    operations.removeFolder(fileName);
+    return true;
   case OperationType::openFolder:
     operations.enterFolder(fileName);
     path_->addToPath(operations.getCurrent());
     return true;
   case OperationType::closeFolder:
     operations.leaveFolder(path_);
-    return true;
-  case OperationType::deleteFolder:
-    operations.removeFolder(fileName);
     return true;
   case OperationType::clearTerminal:
     operations.clearTerminal();
