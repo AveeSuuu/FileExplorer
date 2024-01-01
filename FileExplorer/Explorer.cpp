@@ -1,18 +1,12 @@
 #include "Explorer.hpp"
 
 Explorer::Explorer() {
-  root_ = new Folder("home");
-  path_ = new PathHandler();
+  root_ = std::make_shared<Folder>("home");
+  path_ = std::make_shared<PathHandler>();
   path_->addToPath(root_);
-  operations_ = new OperationsHandler(path_);
+  operations_ = std::make_shared<OperationsHandler>(path_);
 }
 
 void Explorer::run() {
   while (operations_->selectOperation());
-}
-
-Explorer::~Explorer() {
-  delete root_;
-  delete path_;
-  delete operations_;
 }

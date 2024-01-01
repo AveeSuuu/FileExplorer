@@ -2,13 +2,14 @@
 #include <vector>
 #include <string>
 #include "Folder.hpp"
+
 class PathHandler{
 public:
-  void addToPath(Folder* folder);
+  void addToPath(std::shared_ptr<Folder> folder);
   void removeFromPath();
   std::string getPath() const;
-  Folder* getCurrentLocation();
+  std::shared_ptr<Folder> getCurrentLocation();
 private:
-  std::vector<Folder*> path_;
+  std::vector<std::shared_ptr<Folder>> path_;
 };
 

@@ -1,6 +1,4 @@
 #include "Explorer.hpp"
-#include <iostream>
-#include <memory>
 
 int main() {
 

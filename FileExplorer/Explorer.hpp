@@ -8,10 +8,9 @@ class Explorer{
 public:
   Explorer();
   void run();
-  ~Explorer();
 private:
-  Folder* root_ = nullptr;
-  PathHandler* path_ = nullptr;
-  OperationsHandler* operations_ = nullptr;
+  std::shared_ptr<Folder> root_ = nullptr;
+  std::shared_ptr<PathHandler> path_ = nullptr;
+  std::shared_ptr<OperationsHandler> operations_ = nullptr;
 };
 

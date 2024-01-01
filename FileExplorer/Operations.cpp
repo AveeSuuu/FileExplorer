@@ -1,10 +1,10 @@
 #include "Operations.hpp"
 
-void Operations::setCurrent(Folder* folder) {
+void Operations::setCurrent(std::shared_ptr<Folder> folder) {
   this->current = folder;
 }
 
-Folder* Operations::getCurrent() {
+std::shared_ptr<Folder> Operations::getCurrent() {
   return this->current;
 }
 
@@ -30,7 +30,7 @@ void Operations::listElements() {
   }
 }
 
-void Operations::treeElements(Folder* folder, int level) {
+void Operations::treeElements(std::shared_ptr<Folder> folder, int level) {
 
   auto currentContainer = folder->getAccessToContainer();
 
@@ -78,7 +78,6 @@ void Operations::removeFolder(const std::string& folderName) {
     std::cerr << "[!] Folder '" << folderName << "' doesn't exist!\n";
     return;
   }
-  delete current->getAccessToContainer()->at(folderName);
   current->getAccessToContainer()->erase(folderName);
 }
 
@@ -91,7 +90,7 @@ void Operations::enterFolder(const std::string& folderName) {
   current = current->getAccessToContainer()->at(folderName);
 }
 
-void Operations::leaveFolder(PathHandler* path) {
+void Operations::leaveFolder(std::shared_ptr<PathHandler> path) {
 
   if (current->getFolderName() == "home") {
     std::cerr << "[!] Can't leave root folder!\n";

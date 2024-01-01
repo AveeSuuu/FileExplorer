@@ -1,6 +1,6 @@
 #include "OperationsHandler.hpp"
 
-OperationsHandler::OperationsHandler(PathHandler* path) {
+OperationsHandler::OperationsHandler(std::shared_ptr<PathHandler> path) {
   operationCommands[(std::string)"help"] = OperationType::help;
   operationCommands[(std::string)"ls"] = OperationType::listElements;
   operationCommands[(std::string)"tree"] = OperationType::treeElements;

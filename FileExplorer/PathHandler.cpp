@@ -1,6 +1,6 @@
 #include "PathHandler.hpp"
 
-void PathHandler::addToPath(Folder* folder) {
+void PathHandler::addToPath(std::shared_ptr<Folder> folder) {
   path_.push_back(folder);
 }
 
@@ -18,6 +18,6 @@ std::string PathHandler::getPath() const {
   return path;
 }
 
-Folder* PathHandler::getCurrentLocation() {
+std::shared_ptr<Folder> PathHandler::getCurrentLocation() {
   return path_.back();
 }

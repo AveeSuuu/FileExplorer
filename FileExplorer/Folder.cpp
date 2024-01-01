@@ -8,7 +8,7 @@ std::string Folder::getFolderName() const {
   return this->fileName_;
 }
 
-std::unordered_map<std::string, Folder*>* Folder::getAccessToContainer() {
+std::unordered_map<std::string, std::shared_ptr<Folder>>* Folder::getAccessToContainer() {
   return &files_;
 }
 
